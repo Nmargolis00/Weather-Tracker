@@ -28,10 +28,10 @@ function saveData(){
     
         //Way to confirm that it is a city
     
-        search.push({cityEl});
+        search.push(cityEl);
         localStorage.setItem('search', JSON.stringify(search))
     
-        console.log(search);
+    
         
         //Make a button of that city
 
