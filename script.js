@@ -6,36 +6,40 @@
  let city;
  let apiURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}'
  let search = [];
- let cityEl = document.querySelector('#city-search');
+//  let cityEl = document.querySelector('#city-search');
  let previousCities = JSON.parse(localStorage.getItem('search'));
+ let searchBtn = document.querySelector('.search-button');
 
 
 //Save user input
 
 function saveData(){
  
-    if(previousCities){
-        search = previousCities;
-    }
-   
-    cityEl.value();
-    if(search.includes(cityEl)){
-        return;
-    }
-
-    //Way to confirm that it is a city
-
-    search.push({cityEl});
-    localStorage.setItem('search', JSON.stringify(search))
-
-    console.log('hello');
+    let cityEl = document.querySelector('#city-search').value;
+    console.log(cityEl);
+     
+        if(previousCities){
+            search = previousCities;
+        }
     
-    //Make a button of that city
+        if(search.includes(cityEl)){
+            return;
+        }
+    
+        //Way to confirm that it is a city
+    
+        search.push({cityEl});
+        localStorage.setItem('search', JSON.stringify(search))
+    
+        console.log(search);
+        
+        //Make a button of that city
 
 }
 
+// will need to encompass this as a larger function
+searchBtn.addEventListener("click", saveData);
 
-cityEl.addEventListener("click", saveData);
 
  //Load Saved Cities
 
