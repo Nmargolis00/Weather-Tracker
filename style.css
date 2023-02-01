@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+/* NavBar classes */
+
+.container-fluid {
+
+    background-color: rgb(88, 202, 202);
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+
+}
+
+.navbar-brand {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-size: 50px;
+    font: rgb(82, 73, 73);
+    font-family: Arial, Helvetica, sans-serif
+}
+
+
+
+
+
+/* Search Bar */
+
+.input-group {
+    /* border: white 5px solid; */
+    float: left;
+    width: 300px;
+    padding: 10px;
+  
+}
+
+.search-title{
+    width: 300px;
+    text-align: center;
+}
+
+/* Main Display */
+
+.current-city-data {
+    border: black 2px solid;
+    margin-left: 400px;
+    width: 75%;
+    padding: 10px;
+    height: 200px;
+    margin-bottom: 10px;
+
+}
+
+/* 5 Day Forecast */
+.row{
+    margin-left: 400px;
+    width: 75%;
+    padding: 10px;
+    height: 300px;
+}
+
+.card{
+    background-color: rgb(6, 6, 116) ;
+    margin: 5px;
+    color: white;
+}
