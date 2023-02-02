@@ -7,7 +7,7 @@ let apiURL =
   "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
 let search = [];
 let buttonDisplay = document.querySelector(".prev-city");
-// let previousCities = JSON.parse(localStorage.getItem("search"));
+let previousCities = JSON.parse(localStorage.getItem("search"));
 let searchBtn = document.querySelector(".search-button");
 let geoCodeAPI =
   "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
@@ -24,7 +24,9 @@ function saveData() {
     localStorage.setItem("search", JSON.stringify(search));
   }
 
- 
+  
+makeButton(search);
+}
 
 // Create a button for the city
 
