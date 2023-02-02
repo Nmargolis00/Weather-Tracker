@@ -6,9 +6,10 @@
  let city;
  let apiURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}'
  let search = [];
-//  let cityEl = document.querySelector('#city-search');
+let buttonDisplay = document.querySelector('.prev-city')
  let previousCities = JSON.parse(localStorage.getItem('search'));
  let searchBtn = document.querySelector('.search-button');
+let geoCodeAPI = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}'
 
 
 //Save user input
@@ -16,7 +17,7 @@
 function saveData(){
  
     let cityEl = document.querySelector('#city-search').value;
-    console.log(cityEl);
+    // console.log(cityEl);
      
         if(previousCities){
             search = previousCities;
@@ -25,20 +26,47 @@ function saveData(){
         if(search.includes(cityEl)){
             return;
         }
-    
-        //Way to confirm that it is a city
-    
+        
         search.push(cityEl);
         localStorage.setItem('search', JSON.stringify(search))
-    
-    
         
-        //Make a button of that city
+}
+
+
+// Create a button for the city
+
+function makeButton (search){
+    for (let index = 0; index < search.length; index++) {
+        
+        let divButton = document.createElement('div');
+
+        let cityButton = document.createElement("button");
+
+        cityButton.setAttribute("class", "d-grid gap-2");
+
+        cityButton.setAttribute("type", "button");
+
+        cityButton.textContent = search[index].cityEl;
+
+        buttonDisplay.appendChild(divButton);
+        divButton.appendChild(cityButton);
+        
+       
+    }
 
 }
 
+
+
 // will need to encompass this as a larger function
 searchBtn.addEventListener("click", saveData);
+
+
+
+
+
+
+
 
 
  //Load Saved Cities
