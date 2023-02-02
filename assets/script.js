@@ -22,15 +22,19 @@ function saveData() {
   if (!search.includes(cityEl)) {
     search.push(cityEl);
     localStorage.setItem("search", JSON.stringify(search));
+    
   }
 
-  
-makeButton(search);
+  makeButton(search);
+
 }
 
 // Create a button for the city
 
 function makeButton(search) {
+
+    buttonDisplay.innerHTML = "";
+
   for (let index = 0; index < search.length; index++) {
     let divButton = document.createElement("div");
 
