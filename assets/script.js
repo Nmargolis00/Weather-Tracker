@@ -53,6 +53,33 @@ function makeButton(search) {
   }
 }
 
+console.log(search)
+
+//Find longitude and latitude
+
+function getCoordinates (search){
+    let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${search},US&limit=5&appid=${apiKey}`
+
+//Do I need the US in there?
+
+    console.log(search)
+
+    fetch(geoCodeAPI)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        if (!data[0]){
+            alert('No information found')
+        }
+        console.log(data)
+    })
+
+    getCoordinates();
+}
+
+
+
 
 // will need to encompass this as a larger function
 searchBtn.addEventListener("click", saveData);
