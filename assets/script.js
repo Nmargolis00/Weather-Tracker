@@ -1,4 +1,4 @@
- // Declare Variables
+// Declare Variables
 let apiKey = "13a7b624431f355c13de07f31de5ddb4";
 let latitude;
 let longitude;
@@ -7,7 +7,7 @@ let apiURL =
   "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
 let search = [];
 let buttonDisplay = document.querySelector(".prev-city");
-let previousCities = JSON.parse(localStorage.getItem("search"));
+// let previousCities = JSON.parse(localStorage.getItem("search"));
 let searchBtn = document.querySelector(".search-button");
 let geoCodeAPI =
   "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
@@ -23,7 +23,8 @@ function saveData() {
     search.push(cityEl);
     localStorage.setItem("search", JSON.stringify(search));
   }
-}
+
+ 
 
 // Create a button for the city
 
@@ -33,7 +34,7 @@ function makeButton(search) {
 
     let cityButton = document.createElement("button");
 
-    cityButton.setAttribute("class", "d-grid gap-2");
+    cityButton.setAttribute("class", "prev-city");
 
     cityButton.setAttribute("type", "button");
 
@@ -46,7 +47,6 @@ function makeButton(search) {
   }
 }
 
-makeButton(previousCities);
 
 // will need to encompass this as a larger function
 searchBtn.addEventListener("click", saveData);
@@ -81,4 +81,3 @@ searchBtn.addEventListener("click", saveData);
 //   You can set the URL as a variable and then have the URL as a string so you can modify parts of IDBTransaction. This is how you would adjust for your search function
 
 // Search a city and have it find the longitude and latitude of that city
- 

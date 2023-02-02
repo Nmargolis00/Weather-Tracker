@@ -14,8 +14,13 @@
 
 }
 
-.stored-cities {
-    border: 5px solid purple;
+.prev-city {
+    position: static;
+top: 30px; right: 0px;
+    margin: 5px;
+    width: 200px;
+    height: 40px
+    
 }
 
 .navbar-brand {
