@@ -22,7 +22,7 @@ function saveData() {
   if (!search.includes(cityEl)) {
     search.push(cityEl);
     localStorage.setItem("search", JSON.stringify(search));
-    
+    console.log(search)
   }
 
   makeButton(search);
@@ -57,10 +57,12 @@ console.log(search)
 
 //Find longitude and latitude
 
-function getCoordinates (search){
-    let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${search},US&limit=5&appid=${apiKey}`
+function getCoordinates (cityEl){
 
-//Do I need the US in there?
+
+    let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEl},US&limit=1&appid=${apiKey}`
+
+
 
     console.log(search)
 
@@ -69,20 +71,21 @@ function getCoordinates (search){
         return response.json();
     })
     .then(function(data){
-        if (!data[0]){
-            alert('No information found')
-        }
         console.log(data)
     })
 
-    getCoordinates();
+    // let latitude = response.lat
+
+    
 }
 
 
 
 
 // will need to encompass this as a larger function
-searchBtn.addEventListener("click", saveData);
+searchBtn.addEventListener("click", function (){
+    saveData(); 
+    getCoordinates(search[search.length-1]);});
 
 //Load Saved Cities
 
