@@ -22,18 +22,16 @@ function saveData() {
   if (!search.includes(cityEl)) {
     search.push(cityEl);
     localStorage.setItem("search", JSON.stringify(search));
-    console.log(search)
+    console.log(search);
   }
 
   makeButton(search);
-
 }
 
 // Create a button for the city
 
 function makeButton(search) {
-
-    buttonDisplay.innerHTML = "";
+  buttonDisplay.innerHTML = "";
 
   for (let index = 0; index < search.length; index++) {
     let divButton = document.createElement("div");
@@ -46,46 +44,74 @@ function makeButton(search) {
 
     cityButton.textContent = search[index];
 
-
-
     buttonDisplay.appendChild(divButton);
     divButton.appendChild(cityButton);
   }
 }
 
-console.log(search)
+console.log(search);
 
 //Find longitude and latitude
 
-function getCoordinates (cityEl){
 
+function getCoordinates(cityEl) {
+  let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEl},US&limit=1&appid=${apiKey}`;
 
-    let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEl},US&limit=1&appid=${apiKey}`
+  console.log(search);
 
-
-
-    console.log(search)
-
-    fetch(geoCodeAPI)
-    .then(function(response){
-        return response.json();
+  fetch(geoCodeAPI)
+    .then(function (response) {
+      return response.json();
     })
-    .then(function(data){
-        console.log(data)
-    })
+    .then(function (data) {
 
-    // let latitude = response.lat
+        let latitude = data[0].lat;
+        let longitude = data[0].lon;
+        console.log('lat: ' + latitude, 'long: ' + longitude);
+        console.log(data[0]);
+        let city = data[0].name;
+      
+        let weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
 
-    
+        fetch(weatherAPI)
+        .then(function(response){
+          return response.json();
+        })
+        .then(function(data){
+          console.log(data.list[0]);
+          let today = dayjs()
+          
+          console.log(today)
+          let weatherIcon = data.list[0].weather[0].icon
+          let weatherIconURL = `https://openweathermap.org/img/wn/${weatherIcon}.png`
+          let iconDescription = data.list[0].weather[0].description
+          let forecast = $(`
+          <div>
+          <h2>${city}  ${today.format('M/D/YYYY')}</h2>
+          <div>
+          <img src="${weatherIconURL}" alt="${iconDescription}"/>
+          </div>
+          <p>Wind Speed: ${data.list[0].wind.speed}</p>
+          <p>Temperature: ${data.list[0].main.temp}</p>
+          <p>Humidity: ${data.list[0].main.humidity}</p>
+          </div>
+          `)
+        $('.current-city-data').append(forecast);
+        })
+      
+    });
+  
+ 
+
+
+
 }
 
-
-
-
 // will need to encompass this as a larger function
-searchBtn.addEventListener("click", function (){
-    saveData(); 
-    getCoordinates(search[search.length-1]);});
+searchBtn.addEventListener("click", function () {
+  saveData();
+  getCoordinates(search[search.length - 1]);
+});
 
 //Load Saved Cities
 

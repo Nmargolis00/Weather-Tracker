@@ -58,7 +58,7 @@ top: 30px; right: 0px;
     margin-left: 400px;
     width: 75%;
     padding: 10px;
-    height: 200px;
+    height: fit-content;
     margin-bottom: 10px;
 
 }
