@@ -121,12 +121,12 @@ let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('12:00:00'))
 
           let fiveDayForecast = $(`
           <div class="card" style="width: 17rem">
-          <img src="${weatherIconURL}" alt="${iconDescription}"/>
-        <div class="card-body">
           <h5 class="card-title">${cityEl}, ${currentDate} </h5>
-          <p>Wind Speed: ${fiveDayArray[index].wind.speed}</p>
-          <p>Temperature: ${fiveDayArray[index].main.temp}</p>
-          <p>Humidity: ${fiveDayArray[index].main.humidity}</p>
+          <img class = "weather-image" src="${weatherIconURL}" alt="${iconDescription}"/>
+        <div class="card-body">
+          <p>Wind Speed: ${fiveDayArray[index].wind.speed} mph</p>
+          <p>Temperature: ${fiveDayArray[index].main.temp} degrees</p>
+          <p>Humidity: ${fiveDayArray[index].main.humidity} %</p>
           
         </div>
           `)
