@@ -99,11 +99,43 @@ function getCoordinates(cityEl) {
         $('.current-city-data').append(forecast);
         })
       
+      
+        let fiveDayAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+
+        fetch(fiveDayAPI)
+        .then(function(response){
+          return response.json();
+        })
+        .then(function(data){
+
+         
+        
+let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('12:00:00'))
+
+        for (let index = 0; index < fiveDayArray.length; index++) {
+
+          let currentDate = new Date(fiveDayArray[index].dt_txt).toLocaleString().split(",")[0];
+          let weatherIcon = fiveDayArray[index].weather[0].icon
+          let weatherIconURL = `https://openweathermap.org/img/wn/${weatherIcon}.png`
+          let iconDescription = data.list[0].weather[0].description
+
+          let fiveDayForecast = $(`
+          <div class="card" style="width: 17rem">
+          <img src="${weatherIconURL}" alt="${iconDescription}"/>
+        <div class="card-body">
+          <h5 class="card-title">${cityEl}, ${currentDate} </h5>
+          <p>Wind Speed: ${fiveDayArray[index].wind.speed}</p>
+          <p>Temperature: ${fiveDayArray[index].main.temp}</p>
+          <p>Humidity: ${fiveDayArray[index].main.humidity}</p>
+          
+        </div>
+          `)
+        $('.fiveday-section').append(fiveDayForecast);
+          
+        }
+      });
     });
   
- 
-
-
 
 }
 
@@ -112,6 +144,7 @@ searchBtn.addEventListener("click", function () {
   saveData();
   getCoordinates(search[search.length - 1]);
 });
+cityButton.addEventListener("click", getCoordinates());
 
 //Load Saved Cities
 
