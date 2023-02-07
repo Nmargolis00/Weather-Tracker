@@ -11,6 +11,9 @@ let previousCities = JSON.parse(localStorage.getItem("search"));
 let searchBtn = document.querySelector(".search-button");
 let geoCodeAPI =
   "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
+  const weatherContainer = document.querySelector('.current-city-data')
+  const fivedayContainer = document.querySelector('.fiveday-section')
+
 
   loadData();
   //load saved cities
@@ -70,6 +73,9 @@ console.log(search);
 
 
 function getCoordinates(cityEl) {
+
+  weatherContainer.innerHTML = ''
+  fivedayContainer.innerHTML = ''
   let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEl},US&limit=1&appid=${apiKey}`;
 
   console.log(search);
@@ -102,7 +108,7 @@ function getCoordinates(cityEl) {
           let iconDescription = data.list[0].weather[0].description
           let forecast = $(`
           <div>
-          <h2>${city}  ${today.format('dddd, MMM D, YYYY')}</h2>
+          <h2>${city}  ${today.format('(dddd, MMM D, YYYY)')}</h2>
           <div>
           <img src="${weatherIconURL}" alt="${iconDescription}"/>
           </div>
