@@ -103,7 +103,7 @@ function getCoordinates(cityEl) {
           
           console.log(today)
           let weatherIcon = data.list[0].weather[0].icon
-          let weatherIconURL = `https://openweathermap.org/img/wn/${weatherIcon}.png`
+          let weatherIconURL = `https://openweathermap.org/img/w/${weatherIcon}.png`
           let iconDescription = data.list[0].weather[0].description
           let forecast = $(`
           <div>
@@ -111,9 +111,9 @@ function getCoordinates(cityEl) {
           <div>
           <img src="${weatherIconURL}" alt="${iconDescription}"/>
           </div>
-          <p>Wind Speed: ${data.list[0].wind.speed}</p>
-          <p>Temperature: ${data.list[0].main.temp}</p>
-          <p>Humidity: ${data.list[0].main.humidity}</p>
+          <p>Wind Speed: ${data.list[0].wind.speed} MPH</p>
+          <p>Temperature: ${data.list[0].main.temp} Degrees</p>
+          <p>Humidity: ${data.list[0].main.humidity} %</p>
           </div>
           `)
         $('.current-city-data').append(forecast);
@@ -130,13 +130,13 @@ function getCoordinates(cityEl) {
 
          
         
-let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('12:00:00'))
+let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('00:00:00'))
 
         for (let index = 0; index < fiveDayArray.length; index++) {
 
           let currentDate = new Date(fiveDayArray[index].dt_txt).toLocaleString().split(",")[0];
           let weatherIcon = fiveDayArray[index].weather[0].icon
-          let weatherIconURL = `https://openweathermap.org/img/wn/${weatherIcon}.png`
+          let weatherIconURL = `https://openweathermap.org/img/w/${weatherIcon}.png`
           let iconDescription = data.list[0].weather[0].description
 
           let fiveDayForecast = $(`
