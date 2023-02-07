@@ -12,7 +12,22 @@ let searchBtn = document.querySelector(".search-button");
 let geoCodeAPI =
   "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
 
-//Save user input
+  loadData();
+  //load saved cities
+  function loadData() {
+    let search = [];
+    var savedCities = JSON.parse(localStorage.getItem("search"));
+    if (savedCities) {
+      search = savedCities;
+    }
+    console.log(search);
+    makeButton(search);
+  }
+
+
+
+
+  //Save user input
 
 function saveData() {
   let cityEl = document.querySelector("#city-search").value;
@@ -87,7 +102,7 @@ function getCoordinates(cityEl) {
           let iconDescription = data.list[0].weather[0].description
           let forecast = $(`
           <div>
-          <h2>${city}  ${today.format('M/D/YYYY')}</h2>
+          <h2>${city}  ${today.format('dddd, MMM D, YYYY')}</h2>
           <div>
           <img src="${weatherIconURL}" alt="${iconDescription}"/>
           </div>
@@ -138,6 +153,21 @@ let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('12:00:00'))
   
 
 }
+
+
+var allCityButtons = document.querySelectorAll(".prev-city");
+allCityButtons.forEach(function (each) {
+  console.log(each);
+  each.addEventListener("click", function (event) {
+    let cityName = event.target.textContent;
+    console.log(cityName);
+    getCoordinates(cityName);
+    
+  });
+});
+
+
+
 
 // will need to encompass this as a larger function
 searchBtn.addEventListener("click", function () {
