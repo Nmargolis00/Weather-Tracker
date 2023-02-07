@@ -18,7 +18,6 @@ let geoCodeAPI =
   loadData();
   //load saved cities
   function loadData() {
-    let search = [];
     var savedCities = JSON.parse(localStorage.getItem("search"));
     if (savedCities) {
       search = savedCities;
@@ -182,33 +181,4 @@ searchBtn.addEventListener("click", function () {
 });
 cityButton.addEventListener("click", getCoordinates());
 
-//Load Saved Cities
 
-// loadCities();
-
-// function loadCities (){
-
-//     let previousCities = JSON.parse(localStorage.getItem('search'));
-//     if(previousCities){
-//         search = previousCities;
-//     }
-//     // makeButton(search); this will be a new function to create a button based on user input
-// }
-
-// Localstorage city names and maybe add in autocomplete
-// Get longitude and latitude for each city
-// plug into API key
-
-//day.js for dates and future dates
-
-// fetch('https://api.github.com/gists/public?since=2020-06-01&per_page=100')
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-
-//   You can set the URL as a variable and then have the URL as a string so you can modify parts of IDBTransaction. This is how you would adjust for your search function
-
-// Search a city and have it find the longitude and latitude of that city
