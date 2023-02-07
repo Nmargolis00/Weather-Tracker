@@ -56,7 +56,7 @@ function makeButton(search) {
 
     let cityButton = document.createElement("button");
 
-    cityButton.setAttribute("class", "prev-city");
+    cityButton.setAttribute("class", "prev-city-btn");
 
     cityButton.setAttribute("type", "button");
 
