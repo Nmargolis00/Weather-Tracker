@@ -142,7 +142,7 @@ let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('12:00:00'))
 
           let fiveDayForecast = $(`
           <div class="card" style="width: 17rem">
-          <h5 class="card-title">${cityEl}, ${currentDate} </h5>
+          <h5 class="card-title">${currentDate} </h5>
           <img class = "weather-image" src="${weatherIconURL}" alt="${iconDescription}"/>
         <div class="card-body">
           <p>Wind Speed: ${fiveDayArray[index].wind.speed} mph</p>
