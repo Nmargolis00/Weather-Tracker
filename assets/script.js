@@ -10,7 +10,7 @@ let buttonDisplay = document.querySelector(".prev-city");
 let previousCities = JSON.parse(localStorage.getItem("search"));
 let searchBtn = document.querySelector(".search-button");
 let geoCodeAPI =
-  "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
+  "https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
   const weatherContainer = document.querySelector('.current-city-data')
   const fivedayContainer = document.querySelector('.fiveday-section')
 
@@ -75,7 +75,7 @@ function getCoordinates(cityEl) {
 
   weatherContainer.innerHTML = ''
   fivedayContainer.innerHTML = ''
-  let geoCodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEl},US&limit=1&appid=${apiKey}`;
+  let geoCodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${cityEl},US&limit=1&appid=${apiKey}`;
 
   console.log(search);
 
