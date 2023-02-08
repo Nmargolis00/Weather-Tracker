@@ -13,6 +13,7 @@ let geoCodeAPI =
   "https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
   const weatherContainer = document.querySelector('.current-city-data')
   const fivedayContainer = document.querySelector('.fiveday-section')
+ 
 
 
   loadData();
@@ -138,6 +139,7 @@ let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('00:00:00'))
           let weatherIcon = fiveDayArray[index].weather[0].icon
           let weatherIconURL = `https://openweathermap.org/img/wn/${weatherIcon}.png`
           let iconDescription = data.list[0].weather[0].description
+
 
           let fiveDayForecast = $(`
           <div class="card" style="width: 17rem">
