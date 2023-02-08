@@ -112,7 +112,7 @@ function getCoordinates(cityEl) {
           <img src="${weatherIconURL}" alt="${iconDescription}"/>
           </div>
           <p>Wind Speed: ${data.list[0].wind.speed} MPH</p>
-          <p>Temperature: ${data.list[0].main.temp} Degrees</p>
+          <p>Temperature: ${data.list[0].main.temp}\u00B0 F</p>
           <p>Humidity: ${data.list[0].main.humidity} %</p>
           </div>
           `)
@@ -145,7 +145,7 @@ let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('00:00:00'))
           <img class = "weather-image" src="${weatherIconURL}" alt="${iconDescription}"/>
         <div class="card-body">
           <p>Wind Speed: ${fiveDayArray[index].wind.speed} mph</p>
-          <p>Temperature: ${fiveDayArray[index].main.temp} degrees</p>
+          <p>Temperature: ${fiveDayArray[index].main.temp}\u00B0 F</p>
           <p>Humidity: ${fiveDayArray[index].main.humidity} %</p>
           
         </div>
