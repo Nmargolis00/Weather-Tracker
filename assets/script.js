@@ -136,7 +136,7 @@ let fiveDayArray = data.list.filter(day=>day.dt_txt.includes('00:00:00'))
 
           let currentDate = new Date(fiveDayArray[index].dt_txt).toLocaleString().split(",")[0];
           let weatherIcon = fiveDayArray[index].weather[0].icon
-          let weatherIconURL = `https://openweathermap.org/img/w/${weatherIcon}.png`
+          let weatherIconURL = `https://openweathermap.org/img/wn/${weatherIcon}.png`
           let iconDescription = data.list[0].weather[0].description
 
           let fiveDayForecast = $(`
