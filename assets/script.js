@@ -62,10 +62,19 @@ function makeButton(search) {
 
     cityButton.textContent = search[index];
 
+    // Add the event listener here
+    cityButton.addEventListener("click", function () {
+      getCoordinates(search[index]);
+    });
+
     buttonDisplay.appendChild(divButton);
     divButton.appendChild(cityButton);
   }
 }
+
+// This part is not necessary anymore
+// cityButton.addEventListener("click", getCoordinates());
+
 
 console.log(search);
 
@@ -181,6 +190,6 @@ searchBtn.addEventListener("click", function () {
   saveData();
   getCoordinates(search[search.length - 1]);
 });
-cityButton.addEventListener("click", getCoordinates());
+// cityButton.addEventListener("click", getCoordinates());
 
 
